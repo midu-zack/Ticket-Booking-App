@@ -5,7 +5,12 @@ import './SeatSelection.css';
 const SeatSelection = ({ date }) => {
     const [selectedSeat, setSelectedSeat] = useState(null);
     const [bookedSeats, setBookedSeats] = useState([]);
-    const seats = Array.from({ length: 48 }, (_, i) => i + 1);
+    console.log()
+     // Create an array of seat numbers from 1 to 48 using a for loop
+     const seats = [];
+     for (let i = 1; i <= 48; i++) {
+         seats.push(i);
+     }
 
     const handleBookingSuccess = (seat) => {
         setBookedSeats([...bookedSeats, seat]);

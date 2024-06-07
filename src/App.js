@@ -5,7 +5,7 @@ import './App.css';
 const App = () => {
     return (
         <div>
-            <h1 className='app' >Ticket Booking App</h1>
+            <h1 className='app'>Ticket Booking App</h1>
             <CalendarComponent />
         </div>
     );

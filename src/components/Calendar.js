@@ -8,7 +8,9 @@ const CalendarComponent = () => {
     const [date, setDate] = useState(null);
 
     const onChange = (date) => {
+        console.log(date)
         setDate(date);
+        
     };
 
     return (
