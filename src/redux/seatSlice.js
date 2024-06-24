@@ -11,7 +11,9 @@ const seatSlice = createSlice({
     reducers: {
         bookSeat: (state, action) => {
             const { date, seat } = action.payload;
-            if (!state.bookings[date]) {
+
+        if (!state.bookings[date]) {
+
                 state.bookings[date] = [];
             }
             state.bookings[date].push(seat);
@@ -19,10 +21,12 @@ const seatSlice = createSlice({
         selectSeat: (state, action) => {
             state.selectedSeat = action.payload;
         },
-        resetSelectedSeat: (state) => {
+
+        resetSelectedSeat: (state) =>   {
             state.selectedSeat = null;
-        },
+},
         loadBookingsFromStorage: (state, action) => {
+
             state.bookings = action.payload;
         }
     }
