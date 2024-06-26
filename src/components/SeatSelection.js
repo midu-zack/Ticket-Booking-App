@@ -1,7 +1,15 @@
 import React, { useEffect } from "react";
+
 import { useDispatch, useSelector } from "react-redux";
+
 import BookingForm from "./BookingForm";
-import { bookSeat, selectSeat, resetSelectedSeat, loadBookingsFromStorage } from "../redux/seatSlice";
+import {
+  bookSeat,
+  selectSeat,
+  resetSelectedSeat,
+  loadBookingsFromStorage,
+} from "../redux/seatSlice";
+
 import "./SeatSelection.css";
 
 const SeatSelection = ({ date }) => {
@@ -21,7 +29,6 @@ const SeatSelection = ({ date }) => {
   }
 
   const handleBookingSuccess = (seat) => {
- 
     const updatedBookings = JSON.parse(JSON.stringify(bookings));
 
     if (!updatedBookings[formattedDate]) {
@@ -57,12 +64,11 @@ const SeatSelection = ({ date }) => {
           <button
             key={seat}
             className={`seat ${
-              (bookings[formattedDate] || []).includes(seat) ? "booked" : ""
-            }`}
-            onClick={() =>
-              !(bookings[formattedDate] || []).includes(seat) &&
+              (bookings[formattedDate] || [] ).includes(seat) ? "booked" : "" }`}
+              onClick={() => !(bookings[formattedDate] || [] ).includes(seat) &&
               dispatch(selectSeat(seat))
             }
+
             disabled={(bookings[formattedDate] || []).includes(seat)}
           >
             Seat {seat}

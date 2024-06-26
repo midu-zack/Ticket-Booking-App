@@ -21,7 +21,7 @@ const BookingForm = ({ date, seat, onBookingSuccess }) => {
                         placeholder='Name'
                         value={name} 
                         onChange={(e) => setName(e.target.value)} 
-                        required 
+                        required
                     />
                 </div>
                 <div className="form-group">
