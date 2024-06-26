@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import BookingForm from "./BookingForm";
-import {bookSeat, selectSeat, resetSelectedSeat, loadBookingsFromStorage } from "../redux/seatSlice";
+import { bookSeat, selectSeat, resetSelectedSeat, loadBookingsFromStorage } from "../redux/seatSlice";
 import "./SeatSelection.css";
 
 const SeatSelection = ({ date }) => {
@@ -21,13 +21,19 @@ const SeatSelection = ({ date }) => {
   }
 
   const handleBookingSuccess = (seat) => {
-    const updatedBookings = { ...bookings}
+ 
+    const updatedBookings = JSON.parse(JSON.stringify(bookings));
 
     if (!updatedBookings[formattedDate]) {
       updatedBookings[formattedDate] = [];
     }
 
-    updatedBookings[formattedDate].push(seat);
+    if (!updatedBookings[formattedDate].includes(seat)) {
+      updatedBookings[formattedDate].push(seat);
+    } else {
+      alert(`Seat ${seat} is already booked for ${formattedDate}`);
+      return;
+    }
 
     localStorage.setItem("bookings", JSON.stringify(updatedBookings));
     dispatch(bookSeat({ date: formattedDate, seat }));
@@ -44,7 +50,7 @@ const SeatSelection = ({ date }) => {
         />
       )}
 
-      <h3> Select a Seat for {formattedDate}</h3>
+      <h3>Select a Seat for {formattedDate}</h3>
 
       <div className="seat-grid">
         {seats.map((seat) => (
